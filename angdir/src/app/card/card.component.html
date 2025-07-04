@@ -1,0 +1,13 @@
+<div class="p-card">
+  <p class="p-name">{{items.name}}</p>
+  <p class="p-category">{{items.category}}</p>
+  <p class="p-rating">⭐ {{items.rating}}</p>
+  <p [ngClass]="items.inStock ? 'text-green' : 'text-red'">
+    {{ items.inStock ? 'In Stock' : 'Out of Stock' }}
+  </p>
+  <p class="price">₹{{items.price}}</p> 
+  <button class="btn btn-primary" *ngIf="items.inStock ; else notify">Buy Now</button>
+  <ng-template #notify>
+    <button class="btn btn-warning" >Notify Me</button>
+  </ng-template>
+</div>

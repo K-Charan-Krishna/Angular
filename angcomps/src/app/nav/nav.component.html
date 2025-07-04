@@ -1,0 +1,15 @@
+<div class="nav-head">
+    <h1 class="name">
+        K CHARAN KRISHNA
+    </h1>
+    <div class="input-div">
+        <label  class="label" for="input">Search</label>
+        <input class="input-box" type="text" [(ngModel)]="values"/>
+        <span class="text-light fs-6" *ngIf="values !='' ">you searched for {{values}}</span>
+    </div>
+    <div class="pag-div">
+    <a routerLink="/" class="pags">HOME</a>
+    <a routerLink="/about" class="pags">ABOUT</a>
+    <a routerLink="/contact" class="pags">CONTACT</a>
+    </div>
+</div>

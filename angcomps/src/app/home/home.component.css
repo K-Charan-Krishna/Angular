@@ -1,0 +1,119 @@
+/* Home section container */
+.home-div {
+    background-color: rgb(66, 50, 50);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    overflow: hidden; /* Prevents any unwanted overflow when animation runs */
+}
+
+/* Home header (title) */
+.home-head {
+    color: rgb(191, 212, 69);
+    font-family: 'Caviet', sans-serif; /* Ensure font is correctly applied */
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Adds some depth with shadow */
+    letter-spacing: 1px;
+    animation: fadeIn 1s ease-out; /* Animation for header */
+}
+
+/* Home paragraph */
+.home-para {
+    color: rgb(191, 212, 69);
+    font-family: 'Arial', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    animation: waveText 1.5s ease-in-out infinite; /* Waving animation */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+}
+
+/* Keyframes for waving animation */
+@keyframes waveText {
+    0% {
+        transform: rotate(0deg); /* Initial position */
+    }
+    25% {
+        transform: rotate(5deg); /* Slight rotation to the right */
+    }
+    50% {
+        transform: rotate(0deg); /* Back to neutral */
+    }
+    75% {
+        transform: rotate(-5deg); /* Slight rotation to the left */
+    }
+    100% {
+        transform: rotate(0deg); /* Back to neutral */
+    }
+}
+
+/* Keyframes for fade-in effect */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Additional Responsive Styles (Optional) */
+@media (max-width: 768px) {
+    .home-head {
+        font-size: 2.5rem;
+    }
+
+    .home-para {
+        font-size: 1rem;
+    }
+}
+.cards{
+    display: flex;
+    gap:12px;
+
+}
+
+.skill-card {
+  background-color: #1c1c1c; /* Dark background */
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+  color: #f1c40f; /* Yellow text */
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.skill-card:hover {
+  transform: scale(1.02);
+}
+
+.skill-type {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #f39c12; 
+  margin-bottom: 8px;
+}
+
+.skill-name {
+  font-size: 1.3rem;
+  margin: 6px 0;
+  color: #f7dc6f;
+}
+
+.skill-set {
+  font-size: 0.95rem;
+  margin-left: 12px;
+  padding: 2px 0;
+  color: #f9e79f;
+}
+.removeCard {
+   display: none;
+}

@@ -1,0 +1,9 @@
+<div class="app-div">
+  <input type="text" #input />
+  <button (click)="getInput(input)">CLick</button>
+  <app-demo [input]="userInput" *ngIf="destroyv">
+    <p>Charan Krishna {{userInput}}</p>
+  </app-demo>
+  <br>
+  <button (click)="destroy()">click to Destroy</button>
+</div>

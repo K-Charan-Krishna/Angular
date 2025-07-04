@@ -1,0 +1,23 @@
+<div class="about-div" id="about">
+    <div class="about-project">
+    <h1 class="about-head">Projects</h1>
+    <select name="project-name" class="input-project-div" [(ngModel)]="selectedType">
+        <option value="all">ALL</option>
+        <option value="Static">Static</option>
+        <option value="Dynamic">Dynamic</option>
+        <option value="Responsive">Responsive</option>
+    </select>
+    <p>{{selectedType}}</p>
+    </div>
+    <div>
+        <div class="project-list">
+            <ng-container *ngFor="let project of projectSamples">
+            <li *ngIf="selectedType==='all' || selectedType===project.type">
+                <app-card [data]="project"
+                          [projectCount]="getTotalProjects()"
+                          (clicked)="onChildhandel($event)"></app-card>
+            </li>
+            </ng-container>
+        </div>
+    </div>
+</div>

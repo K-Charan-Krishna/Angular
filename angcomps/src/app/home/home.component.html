@@ -1,0 +1,20 @@
+<div class="home-div" id="home">
+    <h1 class="home-head">{{head}}</h1>
+    <p class="home-para">{{slogen()}}</p>
+    <!-- <p class="text-primary" [hidden]='hide'>Hidden Para</p>
+    <button class="btn btn-primary" (click)="buttonClick()">Bootstrap Test</button> -->
+    <div class="cards" [ngClass]="{removeCard:hide}">
+    <div class="skill-card" *ngFor="let skill of mernSkills">
+        <p class="skill-type">{{skill.type}}</p>
+        <div>
+        <p class="skill-name">{{skill.name}}</p>
+        </div>
+        <p class="skill-set" *ngFor="let i of skill.skills">{{i}}</p>
+        <p [ngStyle]="{color:skill.status==='Completed'? 'Green':'Red'}" style="font-size: 15px;">{{skill.status}}</p>
+        <button class="btn btn-primary" *ngIf="skill.status==='Completed'; else notify">Look Projects</button>
+        <ng-template #notify>
+            <button class="btn btn-info" (click)="notifyClicke(skill.id)">Notify me</button>
+        </ng-template>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+/* Navbar container */
+.nav-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(44, 44, 41);
+    padding: 10px 20px;
+    border-bottom: 2px solid rgba(197, 240, 79, 0.4); /* Subtle border for separation */
+    transition: background-color 0.3s ease-in-out; /* Smooth transition on hover */
+    position:fixed;
+    min-width: 100vw;
+}
+
+/* Navbar name (Brand) */
+.name {
+    color: rgb(211, 241, 35);
+    font-family: Roboto, sans-serif;
+    font-size: 1.5rem; /* Making the brand name larger */
+    font-weight: bold;
+    cursor: pointer; /* Make the name clickable */
+    transition: transform 0.3s ease-in-out; /* Smooth scale effect on hover */
+}
+
+.name:hover {
+    transform: scale(1.1); /* Slightly enlarge the brand name on hover */
+}
+
+/* Navigation Links container */
+.pags {
+    display: flex;
+    gap: 12px;
+    color: rgb(197, 240, 79);
+    font-size: 1rem;
+    list-style: none;
+}
+
+/* Each pagination button or link */
+.pag-div {
+    display: flex;
+    gap: 12px;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer; /* Cursor pointer to indicate interactivity */
+    transition: color 0.3s, transform 0.2s ease-in-out; /* Smooth hover color and transform */
+}
+
+/* Hover effect for each pagination link */
+.pag-div:hover {
+    color: rgb(255, 255, 255); /* Change text color on hover */
+    transform: translateY(-3px); /* Slightly lift the item on hover */
+}
+
+/* Active state (e.g., for the current page link) */
+.pag-div.active {
+    color: rgb(255, 255, 255); /* White color for active link */
+    text-decoration: underline; /* Underline for active page */
+    font-weight: 600; /* Make it bolder */
+}
+
+/* Focused state (for keyboard navigation) */
+.pag-div:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px rgba(197, 240, 79, 0.6); /* Green outline on focus */
+}
+
+/* Make the entire navigation bar interactive */
+.nav-head:hover {
+    background-color: rgb(34, 34, 34); /* Darken navbar on hover */
+}
+
+/* Extra spacing for responsiveness and better touch targets on mobile */
+@media (max-width: 768px) {
+    .nav-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pags {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pag-div {
+        padding: 8px 0;
+        width: 100%;
+        text-align: left;
+    }
+}
+
+.label{
+    color:rgb(197, 206, 214);
+    font-family: Roboto;
+    font-size: 18px;
+}
+.input-box{
+    height: 30px;
+    width: 250px;
+    font-size: 16px;
+    padding: 10px;
+}
+.input-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:12px;
+}

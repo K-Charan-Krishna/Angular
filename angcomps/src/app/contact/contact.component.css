@@ -1,0 +1,8 @@
+.contact-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(197, 240, 79);
+    background-color:rgb(66, 50, 50);
+    height: 100vh;
+}
