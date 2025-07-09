@@ -10,7 +10,9 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { FormsModule } from '@angular/forms';
 import { CardComponent } from './card/card.component';
-
+import { SetBg } from './customDirective/setBg.directive';
+import { HighlightDirective } from './customDirective/highlight.directive';
+import { MouseDirective } from './mouse.directive';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,9 @@ import { CardComponent } from './card/card.component';
     AboutComponent,
     ContactComponent,
     CardComponent,
+    SetBg,
+    HighlightDirective,
+    MouseDirective
   ],
   imports: [
     BrowserModule,

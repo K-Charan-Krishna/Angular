@@ -8,6 +8,7 @@ import { CardComponent } from './card/card.component';
 import { FormsModule } from '@angular/forms';
 import { AngtrfComponent } from './angtrf/angtrf.component';
 import { LifecycleComponent } from './lifecycle/lifecycle.component';
+import { MouseDirective } from './customdirective/mouse.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LifecycleComponent } from './lifecycle/lifecycle.component';
     NavComponent,
     CardComponent,
     AngtrfComponent,
-    LifecycleComponent
+    LifecycleComponent,
+    MouseDirective
   ],
   imports: [
     BrowserModule,

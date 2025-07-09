@@ -1,7 +1,18 @@
 .app-div{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     height: 100vh;
+}
+.user-div{
+    min-width: 500px;
+    display: flex;
+    justify-content: center;
+    gap:20px;
+}
+p{
+    background-color: lightgreen;
+    color:#ffff;
+    padding:12px;
+    border-radius:12px;
 }

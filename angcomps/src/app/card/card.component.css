@@ -8,11 +8,5 @@
     width: 500px;
 }
 
-.project-card p.fs-6 {
-    margin: 0.5rem 0;
-    font-size: 1rem;
-}
-.project-card:hover{
-    transform: scale(1.02);
-}
+
 

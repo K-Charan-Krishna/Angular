@@ -1,0 +1,8 @@
+<div class="form-group">
+  <input type="text" placeholder="User Name" [(ngModel)]="name"/>
+  <select (change)="statusvalue($event)">
+    <option value="Active" >Active</option>
+    <option value="In Active">In Active</option>
+  </select>
+ <button (click)="gettingInput()">Add</button>
+</div>

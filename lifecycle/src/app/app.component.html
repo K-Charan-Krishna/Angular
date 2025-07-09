@@ -1,4 +1,4 @@
-<div class="app-div">
+<!-- <div class="app-div">
   <input type="text" #input />
   <button (click)="getInput(input)">CLick</button>
   <app-demo [input]="userInput" *ngIf="destroyv">
@@ -6,4 +6,15 @@
   </app-demo>
   <br>
   <button (click)="destroy()">click to Destroy</button>
+</div> -->
+<!-- <div>
+  <app-react></app-react>
+  <app-javascript></app-javascript>
+</div> -->
+<div class="app-div">
+  <app-input (clicked)="datafromChild($event)"></app-input>
+  <div *ngFor='let u of users' class="user-div">
+    <h1>{{u.name}}</h1>
+    <p>{{u.status}}</p>
+  </div>
 </div>
