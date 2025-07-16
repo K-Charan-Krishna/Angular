@@ -1,0 +1,15 @@
+.side-div{
+    background-color: rgb(213, 225, 236);
+    height: 100vh;
+    padding:30px;
+}
+.laber{
+    font-size: 30px;
+    color:black;
+    font-family: Roboto;
+}
+.selecter{
+    height: 35px;
+    width: 180px;
+    padding:5px;
+}

@@ -1,0 +1,16 @@
+<!-- Shopping model -->
+<div routeLink="/">
+  <app-sidebar *ngIf="sidebar"></app-sidebar>
+  <app-nav (searched)="getTheInput($event)"></app-nav>
+
+  <div [ngClass]="{'shift-content': sidebar}" class="hole-class">
+    <div class="card-div">
+      <div *ngFor="let item of product | filter:searchedItem ">
+        <app-card [items]="item">
+        </app-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="spinner" *ngIf="spinner"></div>

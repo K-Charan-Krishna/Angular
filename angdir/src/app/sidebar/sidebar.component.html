@@ -1,0 +1,23 @@
+<div class="side-div">
+  <!-- Category Filter -->
+  <div>
+    <label for="category" class="laber">Category</label><br />
+    <select id="category" class="selecter" (change)="sendCategory($event)">
+      <option value="">All</option>
+      <option value="electronics">Electronics</option>
+      <option value="men's clothing">Men Clothing</option>
+      <option value="women's clothing">Women Clothing</option>
+      <option value="jewelery">Jewelery</option>
+    </select>
+  </div>
+
+  <!-- Sort Function -->
+  <div style="margin-top: 20px;">
+    <label for="sort" class="laber" >Sort By</label><br />
+    <select id="sort" class="selecter" (change)="sendPriceSort($event)">
+      <option value="">Default</option>
+      <option value="Low-High">Price: Low to High</option>
+      <option value="High-Low">Price: High to Low</option>
+    </select>
+  </div>
+</div>

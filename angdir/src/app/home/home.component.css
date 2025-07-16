@@ -1,0 +1,65 @@
+/* Global container */
+.hole-class {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  transition: margin-left 0.3s ease;
+  margin-left: 0;
+}
+
+/* Sidebar styling */
+app-sidebar {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  height: 100%;
+  background-color: #f4f4f4;
+  padding: 1rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Content container (to the right of sidebar) */
+.card-div {
+  /* margin-left: 250px; Same as sidebar width */
+  padding: 1rem;
+  /* width: calc(100% - 250px); */
+  overflow-y: auto;
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Navbar container */
+app-nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1100;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.spinner {
+  border: 16px solid silver;
+  border-top: 16px solid #222;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 700ms linear infinite;
+  top:50%;
+  left:50%;
+  position: absolute;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(-360deg) }
+}
+
+.shift-content {
+  margin-left: 250px; /* or whatever width your sidebar takes */
+}

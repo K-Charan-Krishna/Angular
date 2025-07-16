@@ -19,15 +19,8 @@ export class AppComponent {
     this.users=this.userservices.user
     console.log(this.users)
   }
-  datafromChild(event:{name:string,status:string}){
-      this.users=[...this.users,event]
-      console.log(this.users)
-  }
-}
-  
-  // getInput(input:HTMLInputElement){
-  //       this.userInput=input.value
+  // datafromChild(event:{name:string,status:string}){
+  //     this.users=[...this.users,event]
+  //     console.log(this.users)
   // }
-
-  // destroy(){
-  //   this.destr
+}

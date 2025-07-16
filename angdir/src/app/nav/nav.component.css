@@ -25,6 +25,7 @@ body {
   font-size: 24px;
   font-weight: bold;
   color: #ecf0f1;
+  text-decoration: none;
 }
 
 
@@ -40,4 +41,21 @@ body {
 .nav-head .nav-input:focus {
   outline: none;
   width: 250px;
+}
+.nav-cart{
+  display: flex;
+  gap: 12px;
+  margin-right: 12px;
+}
+.cart{
+  font-weight: bold;
+  color: #ecf0f1;
+  text-decoration: none;
+}
+
+.nav-right{
+  display: flex;
+  gap:15px;
+  align-items: center;
+  justify-content: center;
 }

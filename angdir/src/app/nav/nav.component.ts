@@ -1,4 +1,5 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Products } from '../services/product.service';
 
 @Component({
   selector: 'app-nav',
@@ -6,20 +7,34 @@ import { Component, OnInit, Output,EventEmitter } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  
+  cartLength:number=0
+  inputSearch:string=""
+  isSidebarVisible:boolean=true
 
-  constructor() { }
+  constructor(private product:Products) { }
 
   ngOnInit(): void {
+    this.product.sidebar$.subscribe(val=>{
+    this.isSidebarVisible=val
+    console.log(this.isSidebarVisible,'from nav')
+    })
+    
   }
 
-  inputSearch:string=""
+  ngDoCheck(){
+    this.cartLength=this.product.getCartLength()
+  }
+
+
   
   @Output() searched: EventEmitter<string>= new EventEmitter <string>();
 
-  theEmit(){
+  theEmit():void{
     this.searched.emit(this.inputSearch)
   }
 
-
-
+  showSideBar(){
+    this.product.handelSideBar()
+  }
 }

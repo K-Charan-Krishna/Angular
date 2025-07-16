@@ -1,13 +1,10 @@
-<div class="p-card" appMouse [bordercolor]="'yellow'">
-  <p class="p-name">{{items.name}}</p>
-  <p class="p-category">{{items.category}}</p>
-  <p class="p-rating">⭐ {{items.rating}}</p>
-  <p [ngClass]="items.inStock ? 'text-green' : 'text-red'">
-    {{ items.inStock ? 'In Stock' : 'Out of Stock' }}
-  </p>
-  <p class="price">₹{{items.price}}</p> 
-  <button class="btn btn-primary" *ngIf="items.inStock ; else notify">Buy Now</button>
-  <ng-template #notify>
-    <button class="btn btn-warning" >Notify Me</button>
-  </ng-template>
+<div class="p-card"  >
+  <img [src]="items.image" class="img-card"/>
+  <p class="p-name">{{items.title}}</p>
+  <p class="price">₹{{items.price}}</p>
+  <p class="price">discount {{items.price | persentage}}</p>
+  <div class="card-buttons">
+    <!-- <button class="addto-cart" (click)="addToCart(items.id)">Add to Cart</button> -->
+    <button class="info" routerLink="/product/{{items.id}}">Product Details</button>
+  </div>
 </div>

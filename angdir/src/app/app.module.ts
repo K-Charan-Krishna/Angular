@@ -9,6 +9,14 @@ import { FormsModule } from '@angular/forms';
 import { AngtrfComponent } from './angtrf/angtrf.component';
 import { LifecycleComponent } from './lifecycle/lifecycle.component';
 import { MouseDirective } from './customdirective/mouse.directive';
+import { CartComponent } from './cart/cart.component';
+import { HomeComponent } from './home/home.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import {Products} from './services/product.service';
+import { ProductdetailsComponent } from './productdetails/productdetails.component';
+import { routeguard } from './services/routeguard.service';
+import { Discountpipe } from './discount.pipe';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -17,14 +25,20 @@ import { MouseDirective } from './customdirective/mouse.directive';
     CardComponent,
     AngtrfComponent,
     LifecycleComponent,
-    MouseDirective
+    MouseDirective,
+    CartComponent,
+    HomeComponent,
+    SidebarComponent,
+    ProductdetailsComponent,
+    Discountpipe,
+    FilterPipe 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule 
   ],
-  providers: [],
+  providers: [Products,routeguard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

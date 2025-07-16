@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Products } from '../services/product.service';
 
 // interface Category {
@@ -30,20 +30,28 @@ interface Product {
   };
 }
 
-@Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
-})
-export class CardComponent implements OnInit {
 
-  constructor(private productinj:Products) { }
+
+@Component({
+  selector: 'app-cart',
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.css'],
+})
+export class CartComponent implements OnInit {
+ 
+  cart:Product[]=[]
+  constructor(private product:Products) { }
 
   ngOnInit(): void {
-    
+    this.cart=this.product.cart
   }
-   @Input() items!:Product;
-  addToCart(id:number){
-      this.productinj.addToCart(id)
+  
+  ngDoCheck(){
+      this.cart=this.product.cart
+  }
+
+  removeItem(id:number){
+  this.product.removeFromCart(id)
+  console.log(this.cart)
   }
 }

@@ -1,0 +1,21 @@
+<app-nav></app-nav>
+<div class="product-detail-card">
+  <div class="product-image">
+    <img [src]="productDetails?.image" [alt]="productDetails?.title" />
+  </div>
+
+  <div class="product-info">
+    <h2 class="product-title">{{ productDetails?.title }}</h2>
+    <p class="product-category"><strong>Category:</strong> {{ productDetails?.category }}</p>
+    <p class="product-description">{{ productDetails?.description }}</p>
+    
+    <p class="product-price">Price: ₹{{ productDetails?.price }}</p>
+    <p class="product-rating">
+      Rating: {{ productDetails?.rating?.rate }} ★ ({{ productDetails?.rating?.count }} reviews)
+    </p>
+
+    <button class="add-to-cart-btn" (click)="addToCart()" >Add to Cart</button>
+    <button class="btn btn-primary" (click)="checkquery()">checking the query Parm</button>
+    <button class="btn btn-primary" (click)="addquerparam()">Add the query Parm</button>
+  </div>
+</div>

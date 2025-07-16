@@ -8,6 +8,7 @@ import { JavascriptComponent } from './javascript/javascript.component';
 import { ReactComponent } from './react/react.component';
 import { InputComponent } from './input/input.component';
 import { FormsModule } from '@angular/forms';
+import { loggermsg } from './services/logger.service';
 
 @NgModule({
   declarations: [
@@ -21,9 +22,10 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule 
+    FormsModule
+ 
   ],
-  providers: [],
+  providers: [loggermsg],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

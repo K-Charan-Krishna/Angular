@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {userservices} from '../services/user.service'
 
 @Component({
   selector: 'app-input',
@@ -7,10 +8,10 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class InputComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userservices:userservices) { }
   name:string=''
   status:string='Active'
-  @Output() clicked=new EventEmitter <{name:string,status:string}>();
+  // @Output() clicked=new EventEmitter <{name:string,status:string}>();
   ngOnInit(): void {
   }
   // ngDoCheck(){
@@ -21,10 +22,12 @@ export class InputComponent implements OnInit {
       // console.log(this.status)
   }
   gettingInput(){
-    const userData ={
-      name:this.name,
-      status:this.status
-    }
-    this.clicked.emit(userData)
+    // const userData ={
+    //   name:this.name,
+    //   status:this.status
+    // }
+    // this.clicked.emit(userData)
+    this.userservices.addUser(this.name,this.status)
+    
   }
   }
