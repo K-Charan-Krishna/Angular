@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +20,7 @@ import { ProductdetailsComponent } from './productdetails/productdetails.compone
 import { routeguard } from './services/routeguard.service';
 import { Discountpipe } from './discount.pipe';
 import { FilterPipe } from './filter.pipe';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +35,15 @@ import { FilterPipe } from './filter.pipe';
     SidebarComponent,
     ProductdetailsComponent,
     Discountpipe,
-    FilterPipe 
+    FilterPipe,
+    LoginComponent 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule 
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [Products,routeguard],
   bootstrap: [AppComponent]

@@ -11,10 +11,119 @@
   <app-react></app-react>
   <app-javascript></app-javascript>
 </div> -->
-<div class="app-div">
+<!-- <div class="app-div">
   <app-input ></app-input>
   <div *ngFor='let u of users' class="user-div">
     <h1>{{u.name}}</h1>
     <p>{{u.status}}</p>
   </div>
+</div> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample Form</title>
+</head>
+<body>
+  <div class="whole-body">
+  <h2>User Information Form</h2>
+  <form (ngSubmit)="onSubmit()" [formGroup]="reactiveform">
+    <!-- First Name -->
+      <div formGroupName="personaliDetails" >
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" formControlName="firstname"  ><br><br>
+        <small *ngIf="reactiveform.get('personaliDetails.firstname')?.errors?.['required']" >
+          First Name is Required
+        </small>
+        <small *ngIf="reactiveform.get('personaliDetails.firstname')?.errors?.['handleingSpace']" >
+          First Name Should Not Contain Space 
+        </small>
+
+
+        <!-- Last Name -->
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" formControlName="lastname" ><br><br>
+
+
+        <!-- Email -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email"  ><br><br>
+        <small *ngIf="!this.reactiveform.get('personaliDetails.email')?.valid && this.reactiveform.get('personaliDetails.email')?.touched">Filed is Invalid </small>
+
+        <!-- <button (click)="setdefultvalue()">set defult value</button> -->
+     </div>
+
+    <!-- Country Dropdown -->
+    <label for="country">Country:</label>
+    <select id="country" formControlName="country"  >
+      <option value="">Select Country</option>
+      <option value="usa">United States</option>
+      <option value="canada">Canada</option>
+      <option value="uk">United Kingdom</option>
+      <option value="india">India</option>
+      <option value="australia">Australia</option>
+    </select><br><br>
+
+    <!-- Gender Radio Buttons -->
+    <label>Gender:</label><br>
+    <div class="radio-div">
+    <input type="radio" id="male" formControlName="gender" value="male" >
+    <label for="male">Male</label><br>
+    <input type="radio" id="female" formControlName="gender" value="female">
+    <label for="female">Female</label><br>
+    <input type="radio" id="other" formControlName="gender" value="other">
+    <label for="other">Other</label><br><br>
+    </div>
+
+    <!-- Hobbies Multi-select -->
+    <label>Hobbies:</label><br>
+    <div class="checkbox-group" formArray="hobbies">
+      <!-- <input type="checkbox" id="reading" formControlName="hobbies"   value="reading">
+      <label for="reading">Reading</label><br>
+
+      <input type="checkbox" id="traveling" formControlName="hobbies"  value="traveling">
+      <label for="traveling">Traveling</label><br>
+
+      <input type="checkbox" id="sports" formControlName="hobbies"  value="sports">
+      <label for="sports">Sports</label><br>
+
+      <input type="checkbox" id="music" formControlName="hobbies"  value="music">
+      <label for="music">Music</label><br>
+
+      <input type="checkbox" id="gaming" formControlName="hobbies"  value="gaming">
+      <label for="gaming">Gaming</label><br> -->
+    <div *ngFor="let hobby of hobbiesList; let i = index">
+      <input
+        type="checkbox" 
+        [id]="hobby"
+      />
+      <label [for]="hobby">{{ hobby | titlecase }}</label><br />
+    </div>
+    </div><br>
+        
+    <div formArrayName="skills">
+      <div *ngFor="let skill of skillArray.controls; let i = index">
+        <input type="text" formControlName="{{i}}" placeholder="Enter skill" />
+      </div>
+    </div>
+    <button type="button" (click)="onAddSkill()" class="btn btn-primary">+ Add Skill</button>
+
+
+    <!-- Submit Button -->
+    <input type="submit" value="Submit" >
+  </form>
+  <!-- user-details.component.html -->
+<!-- <div class="user-details-card">
+  <h2>User Details</h2>
+  <div class="user-info">
+    <p><strong>First Name:</strong> {{ first_name }}</p>
+    <p><strong>Last Name:</strong> {{ last_name }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Gender:</strong> {{ gender }}</p>
+    <p><strong>country:</strong> {{ country }}</p>
+  </div>
+</div> -->
 </div>
+
+</body>
+</html>

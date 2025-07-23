@@ -1,6 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import {Products} from '../services/product.service'
-import { flatMap } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
+import {Router } from '@angular/router';
 
 // interface Category {
 //   id: number;
@@ -44,10 +45,16 @@ export class HomeComponent implements OnInit {
   searchedItem:string=''
   sidebar:boolean=false
   spinner:boolean=true
-  constructor(private products:Products) { }
+  constructor(private products:Products , private cookie: CookieService, private router:Router) { }
 
 
   ngOnInit(): void {
+  
+  const jwt=this.cookie.get('jwt')
+  console.log(jwt==='','checking undefind')
+  if (jwt===''){
+     this.router.navigate(['/login'])
+  }
   this.products.fetchProducts().then(() => {
     this.products.sidebar$.subscribe((value)=>{
       this.sidebar=value
