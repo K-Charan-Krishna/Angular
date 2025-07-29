@@ -1,15 +1,20 @@
 .login-container {
-  max-width: 350px;
   margin: auto;
   padding: 2rem;
   border: 1px solid #ccc;
   border-radius: 6px;
   box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
   font-family: Arial, sans-serif;
+  display: flex;
+  height: 80%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fafafa;
 }
 
 h2 {
   text-align: center;
+  align-self: flex-start;
   margin-bottom: 1rem;
 }
 
@@ -47,4 +52,19 @@ button:disabled {
   color: red;
   font-size: 0.85rem;
   margin-top: 0.25rem;
+}
+
+.register-button{
+  background-color: transparent;
+  border: 2px solid #bbd7f5;
+  margin-top:12px;
+  color: #7c9bbd;
+}
+.outer-container{
+    padding: 12px;
+    background-color: #8275fa;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

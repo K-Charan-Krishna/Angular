@@ -1,0 +1,31 @@
+<div class="outer-container">
+<div class="form-container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h2>User Registration</h2>
+
+    <label for="name">Name</label>
+    <input id="name" formControlName="name" type="text" />
+    <div class="error" *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
+      Name is required.
+    </div>
+
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" type="email" />
+    <div class="error" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+      Enter a valid email.
+    </div>
+
+    <label for="password">Password</label>
+    <input id="password" formControlName="password" type="password" />
+    <div class="error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+      Password is required.
+    </div>
+    <button class="submit-button" type="submit">Submit</button>
+    <button class="register-button" routerLink="/login">Login</button>
+  </form>
+  <div>
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/011/432/528/small/enter-login-and-password-registration-page-on-screen-sign-in-to-your-account-creative-metaphor-login-page-mobile-app-with-user-page-flat-illustration-vector.jpg" class="register-img"/>
+  </div>
+</div>
+</div>
+

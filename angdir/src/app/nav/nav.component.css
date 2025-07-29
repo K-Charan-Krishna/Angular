@@ -14,7 +14,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2c3e50;
+  background-color: #8275fa;
   padding: 15px 20px;
   color: white;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -44,18 +44,38 @@ body {
 }
 .nav-cart{
   display: flex;
+  justify-content: space-between;
   gap: 12px;
   margin-right: 12px;
 }
+.router-div{
+  display: flex;
+  gap:12px;
+}
+.router-div> a{
+  text-decoration: none;
+  color:#ffff;
+  font-size: 20px;
+}
+
 .cart{
   font-weight: bold;
   color: #ecf0f1;
   text-decoration: none;
 }
-
+a{
+  text-decoration: none;
+}
 .nav-right{
   display: flex;
   gap:15px;
   align-items: center;
   justify-content: center;
+}
+.logout-btn{
+  background-color: transparent;
+  border-width: 0px;
+  border-radius: 10px;
+  color: #ffff;
+  margin-left: 12px;
 }

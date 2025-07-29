@@ -3,21 +3,7 @@ import {Products} from '../services/product.service'
 import { CookieService } from 'ngx-cookie-service';
 import {Router } from '@angular/router';
 
-// interface Category {
-//   id: number;
-//   name: string;
-//   image: string;
-//   slug: string;
-// }
-//  interface Product {
-//   id: number;
-//   title: string;
-//   slug: string;
-//   price: number; // <-- Fixed typo here
-//   description: string;
-//   category: Category;
-//   images: string[];
-// }
+
 
 export interface Product {
   id: number;
@@ -50,32 +36,31 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   
-  const jwt=this.cookie.get('jwt')
-  console.log(jwt==='','checking undefind')
-  if (jwt===''){
-     this.router.navigate(['/login'])
-  }
-  this.products.fetchProducts().then(() => {
-    this.products.sidebar$.subscribe((value)=>{
-      this.sidebar=value
-    })
-    this.products.spinner$.subscribe((val)=>{
-      this.spinner=val
-    })
-    this.products.product$.subscribe((value)=>{
-      this.product=value;
-    }) 
-  }); 
+  // const jwt=this.cookie.get('jwt')
+  // console.log(jwt==='','checking undefind')
+  // if (jwt===''){
+  //    this.router.navigate(['/login'])
+  // }
+  // this.products.fetchProducts().then(() => {
+  //   this.products.sidebar$.subscribe((value)=>{
+  //     this.sidebar=value
+  //   })
+  //   this.products.spinner$.subscribe((val)=>{
+  //     this.spinner=val
+  //   })
+  //   this.products.product$.subscribe((value)=>{
+  //     this.product=value;
+  //   }) 
+  // }); 
+  console.log('from home Route')
   }
   ngDoCheck():void{
     console.log(this.sidebar,'from home')
   }
    
-  getTheInput(item:string){
-     this.searchedItem=item
-  }
+  // getTheInput(item:string){
+  //    this.searchedItem=item
+  // }
 }
-// function ngDoCheck() {
-//   throw new Error('Function not implemented.');
-// }
+
 

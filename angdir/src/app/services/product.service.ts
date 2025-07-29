@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
-import { flush } from "@angular/core/testing";
 import { BehaviorSubject } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+
 
 interface Product {
   id: number;
@@ -19,10 +20,13 @@ interface Product {
 export class Products {
 
   products: Product[] = [];
-  category: string = '';
-  url: string = 'https://fakestoreapi.com/products/';
+  category!: string ;
+  pricesort!:string;
+  isAdmin!:boolean | undefined;
+  // url: string = 'https://fakestoreapi.com/products/';
   cart: Product[] = [];
-
+  
+  constructor(private http:HttpClient){}
 
   option: { method: string } = {
     method: 'GET'
@@ -40,23 +44,32 @@ export class Products {
   product$=this.productSubject.asObservable()
 
   
-
+  doIsAdmin(val:boolean | undefined){
+    this.isAdmin=val
+      console.log('is Admin',this.isAdmin)
+  }
 
   getCategory(category: string): void {
     this.category = category;
-    this.urlsetting();
+    // this.urlsetting();
     this.fetchProducts()
     console.log(category, 'from services');
   }
 
+  getPriceSort(sort:string):void{
+      this.pricesort=sort
+      console.log(sort,'from services')
+      this.fetchProducts()
+   }
 
-  urlsetting(): void {
-    if (this.category === '') {
-      this.url = 'https://fakestoreapi.in/api/products';
-    } else {
-      this.url = `https://fakestoreapi.com/products/category/${this.category}`;
-    }
-  }
+
+  // urlsetting(): void {
+  //   if (this.category === '') {
+  //     this.url = 'http://localhost:3000/allproducts';
+  //   } else {
+  //     this.url = ;
+  //   }
+  // }
 
 
 
@@ -64,30 +77,26 @@ export class Products {
   async fetchProducts(): Promise<void> {
     try {
       this.spinnerSubject.next(true)
-      const response = await fetch(this.url, this.option);
-      const data = await response.json();
-      // this.products=data
-      this.productSubject.next(data)
-       this.spinnerSubject.next(false)
-      console.log(this.products.slice(0, 3));
+      let url: string = `http://localhost:3000/allproducts?category=${this.category}&sort=${this.pricesort}`;
+      // let  url: string = 'https://fakestoreapi.com/products/';
+      this.http.get<{products:any[]}>(url).subscribe(val=>{
+          console.log(val)
+          this.productSubject.next(val.products)
+          this.spinnerSubject.next(false)
+          // console.log(this.productSubject.getValue().slice(0, 3));
+      })
+      // const response = await fetch(url, this.option);
+      // const data = await response.json();
+      // this.productSubject.next(data)
+      // this.spinnerSubject.next(false)
+      // console.log(data,'from product service')
+
     } catch (error) {
       console.error('Error fetching products:', error);
     }
   }
 
-getPriceSort(sort:string):void{
-       const currentProducts=this.productSubject.getValue()
-       const sorted=[...currentProducts]
 
-        if (sort === 'High-Low') {
-          sorted.sort((a, b) => b.price - a.price)
-        } else {
-          sorted.sort((a, b) => a.price - b.price)
-        }
-
-        this.productSubject.next(sorted)
-        
-   }
 
 
   addToCart(id: number): void {

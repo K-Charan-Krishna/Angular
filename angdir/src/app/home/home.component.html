@@ -1,15 +1,15 @@
-<!-- Shopping model -->
-<div routeLink="/">
+<div class="home-container">
   <app-sidebar *ngIf="sidebar"></app-sidebar>
-  <app-nav (searched)="getTheInput($event)"></app-nav>
-
-  <div [ngClass]="{'shift-content': sidebar}" class="hole-class">
-    <div class="card-div">
-      <div *ngFor="let item of product | filter:searchedItem ">
-        <app-card [items]="item">
-        </app-card>
+  <app-nav></app-nav>
+  
+  <main class="home-main">
+    <div class="home-div">
+      <div class="home-text-div">
+        <h1>Welcome to the Home Route</h1>
+        <p>This is your main landing page. Customize it to show featured products, banners, or anything you want!</p>
+        <button class="btn btn-primary" routerLink="/allproduct">Shop Now</button>
       </div>
+      <img src="https://png.pngtree.com/png-vector/20200410/ourmid/pngtree-man-and-women-customers-enjoying-shopping-online-png-image_2181564.jpg"/>
     </div>
-  </div>
+  </main>
 </div>
-<div class="spinner" *ngIf="spinner"></div>

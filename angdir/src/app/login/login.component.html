@@ -1,5 +1,5 @@
+<div class="outer-container">
 <div class="login-container" routerLink="/login">
-  <form>
     <h2>Login</h2>
     <form (ngSubmit)="onFormSubmit()" [formGroup]="validateForm">
         <div class="form-group">
@@ -18,7 +18,11 @@
         </div>
         </div>
         <button type="submit" >Login</button>
+        <button routerLink="/register" class="register-button">Register</button>
     </form>
-  </form>
+    <div>
+      <img src="https://www.courtdiary.in/user-design/assets/img/login-img.png" class="login-img"/>
+    </div>
+</div>
 </div>
 

@@ -21,6 +21,9 @@ import { routeguard } from './services/routeguard.service';
 import { Discountpipe } from './discount.pipe';
 import { FilterPipe } from './filter.pipe';
 import { LoginComponent } from './login/login.component';
+import { ProductsComponent } from './products/products.component';
+import { InsertproductComponent } from './insertproduct/insertproduct.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { LoginComponent } from './login/login.component';
     ProductdetailsComponent,
     Discountpipe,
     FilterPipe,
-    LoginComponent 
+    LoginComponent,
+    ProductsComponent,
+    InsertproductComponent,
+    RegisterComponent 
   ],
   imports: [
     BrowserModule,

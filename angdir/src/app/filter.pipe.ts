@@ -7,7 +7,7 @@ import {Product} from './home/home.component';
 export class FilterPipe implements PipeTransform {
 
   transform(value: Product[], searchedItem:string) {
-    console.log(value,searchedItem,'from pipe line')
+    console.log(searchedItem,'from pipe line')
     if (searchedItem===''){
       return value
     }

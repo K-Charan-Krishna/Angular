@@ -24,5 +24,6 @@ export class SidebarComponent implements OnInit {
   sendPriceSort(event:Event){
     this.priceSort=(event.target as HTMLSelectElement).value
     this.products.getPriceSort(this.priceSort)
+    console.log(this.priceSort)
   }
 }

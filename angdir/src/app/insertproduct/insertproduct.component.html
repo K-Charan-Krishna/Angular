@@ -1,0 +1,49 @@
+<app-nav></app-nav>
+<form  class="product-form" [formGroup]="formInputs" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input id="title" formControlName="title" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input id="price" type="number" formControlName="price" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea id="description" formControlName="description" class="form-control"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="category">Category</label>
+    <input id="category" formControlName="category" class="form-control" />
+  </div>
+
+    <div class="form-group">
+    <label for="image">Upload Image</label>
+    <input
+        id="image"
+        type="file"
+        class="form-control-file"
+        accept="image/*"
+        (change)="handleingfile($event)"
+    />
+    </div>
+
+  <button type="submit" class="btn-submit">Submit</button>
+  <!-- backendServer='http://localhost:3000'; -->
+   <!-- backendServer+/uploads/product/image_1753780553197.jfif -->
+</form>
+<div class="insert-card">
+<div class="p-card"  *ngIf="formInputs.valid">
+  <img [src]="imagePreview" class="img-card"/>
+  <p class="p-name">{{title }}</p>
+  <p class="price">₹{{price}}</p>
+  <p class="price">discount {{price | persentage}}</p>
+  <div class="card-buttons">
+    <!-- <button class="addto-cart" (click)="addToCart(items.id)">Add to Cart</button> -->
+    <!-- <button class="info" routerLink="/product/{{items.id}}">Product Details</button> -->
+  </div>
+</div>
+</div>
