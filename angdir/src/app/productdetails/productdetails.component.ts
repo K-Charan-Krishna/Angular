@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import {Products} from  '../services/product.service'
 import {IDeactivate} from '../services/routeguard.service'
+import { HttpClient } from '@angular/common/http';
 import { Observable, retry } from 'rxjs';
 
 interface Product {
@@ -24,7 +25,8 @@ interface Product {
 })
 export class ProductdetailsComponent implements OnInit,IDeactivate {
 
-  detailedProduct:Product[]=[]
+  detailedProduct!:Product
+  relatedProducts:Product[]=[]
   productId!:string|null;
   productDetails:Product={
       id: 0,
@@ -39,23 +41,33 @@ export class ProductdetailsComponent implements OnInit,IDeactivate {
       }
 
   }
+
+  database!:string
   
   constructor(private activeRoute:ActivatedRoute,
     private products:Products,
-    private route:Router) { }
+    private route:Router,
+    private http:HttpClient) { }
 
   ngOnInit(): void {
+  this.database='http://localhost:3000'
   this.activeRoute.paramMap.subscribe(params => {
     this.productId = params.get('id');
     console.log(this.productId,'from detailed Product') 
-    const numericId = Number(this.productId);
-    this.products.fetchProducts().then(() => {
-    this.products.product$.subscribe((value)=>{
-      this.detailedProduct=value.filter((each)=>each.id===numericId)
-      this.productDetails=this.detailedProduct[0]
+    let url: string = `http://localhost:3000/product/${this.productId}`;
+    this.http.get<{ product:Product ; related_products: any[] }>(url).subscribe(val => {
+      this.detailedProduct = val.product;
       console.log(this.detailedProduct)
-    })  
-   }); 
+      this.relatedProducts = val.related_products;
+    });
+
+  //   this.products.fetchProducts().then(() => {
+  //   this.products.product$.subscribe((value)=>{
+  //     this.detailedProduct=value.filter((each)=>String(each.id)===String(this.productId))
+  //     this.productDetails=this.detailedProduct[0]
+  //     console.log(this.detailedProduct)
+  //   })  
+  //  }); 
   // this.products.product$.subscribe((val)=>{
   //   console.log(val)
   // })

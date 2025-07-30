@@ -1,5 +1,15 @@
 <div class="p-card"  >
-  <img [src]="items.image" class="img-card"/>
+  <!-- Default image template -->
+<ng-container *ngIf="items.image.includes('/uploads/products'); else productImage">
+    <img [src]="database+ items.image" class="img-card product-uploaded" />
+</ng-container>
+
+<!-- Product image template -->
+<ng-template #productImage>
+  <!-- Use another layout or logic for uploaded products -->
+  <img [src]="items.image" class="img-card product-uploaded" />
+</ng-template>
+
   <p class="p-name">{{ items.title.split(' ').slice(1, 8).join(' ') }}</p>
   <p class="price">₹{{items.price}}</p>
   <p class="price">discount {{items.price | persentage}}</p>

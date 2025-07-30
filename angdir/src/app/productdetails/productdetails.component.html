@@ -1,21 +1,54 @@
 <app-nav></app-nav>
 <div class="product-detail-card">
   <div class="product-image">
-    <img [src]="productDetails?.image" [alt]="productDetails?.title" />
+<ng-container *ngIf="detailedProduct.image.includes('/uploads/products'); else productImage">
+    <img [src]="database+ detailedProduct.image" class="img-card product-uploaded" />
+</ng-container>
+
+<ng-template #productImage>
+
+  <img [src]="detailedProduct.image" class="img-card product-uploaded" />
+</ng-template>
   </div>
 
   <div class="product-info">
-    <h2 class="product-title">{{ productDetails?.title }}</h2>
-    <p class="product-category"><strong>Category:</strong> {{ productDetails?.category }}</p>
-    <p class="product-description">{{ productDetails?.description }}</p>
+    <h2 class="product-title">{{ detailedProduct?.title }}</h2>
+    <p class="product-category"><strong>Category:</strong> {{ detailedProduct?.category }}</p>
+    <p class="product-description">{{ detailedProduct?.description }}</p>
     
-    <p class="product-price">Price: ₹{{ productDetails?.price }}</p>
+    <p class="product-price">Price: ₹{{ detailedProduct?.price }}</p>
     <p class="product-rating">
-      Rating: {{ productDetails?.rating?.rate }} ★ ({{ productDetails?.rating?.count }} reviews)
+      Rating: {{ detailedProduct?.rating?.rate }} ★ ({{ detailedProduct?.rating?.count }} reviews)
     </p>
 
     <button class="add-to-cart-btn" (click)="addToCart()" >Add to Cart</button>
     <button class="btn btn-primary" (click)="checkquery()">checking the query Parm</button>
     <button class="btn btn-primary" (click)="addquerparam()">Add the query Parm</button>
+  </div>
+</div>
+<div class="related-products">
+  <h3>Related Products</h3>
+  <div class="related-product-list">
+    <div class="related-product-card" *ngFor="let product of relatedProducts">
+      <div class="related-product-image">
+        <ng-container *ngIf="product.image.includes('/uploads/products'); else defaultImg">
+          <img [src]="database + product.image" class="img-card product-uploaded" />
+        </ng-container>
+        <ng-template #defaultImg>
+          <img [src]="product.image" class="img-card product-uploaded" />
+        </ng-template>
+      </div>
+
+      <div class="related-product-info">
+        <h4 class="product-title">{{ product.title }}</h4>
+        <p class="product-category"><strong>Category:</strong> {{ product.category }}</p>
+        <p class="product-price">Price: ₹{{ product.price }}</p>
+        <p class="product-rating">
+          Rating: {{ product.rating?.rate }} ★ ({{ product.rating?.count }} reviews)
+        </p>
+        <!-- Optional: Add a link or button to view this product -->
+        <button class="view-product-btn" routerLink="/product/{{product.id}}">View</button>
+      </div>
+    </div>
   </div>
 </div>

@@ -43,6 +43,7 @@ export class InsertproductComponent implements OnInit {
     this.price=this.formInputs.get('price')?.value
     this.description=this.formInputs.get('description')?.value
     this.image=this.formInputs.get('image')?.value
+    this.category=this.formInputs.get('category')?.value
     console.log(this.formInputs)
     const formData = new FormData();
     formData.append('image', this.imgFile);
