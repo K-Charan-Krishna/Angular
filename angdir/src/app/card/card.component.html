@@ -1,9 +1,14 @@
-<div class="p-card" >
-  <!-- Template if image starts with "/uploads/products" -->
-<img *ngIf="items.image?.startsWith('/uploads/products')" [src]="host+items.image" class="img-card" />
+<div class="p-card"  >
+  <!-- Default image template -->
+<ng-container *ngIf="items.image.includes('/uploads/products'); else productImage">
+    <img [src]="database+ items.image" class="img-card product-uploaded" />
+</ng-container>
 
-<!-- Alternative template if not -->
-<img *ngIf="!items.image?.startsWith('/uploads/products')" [src]="items.image" class="img-card" />
+<!-- Product image template -->
+<ng-template #productImage>
+  <!-- Use another layout or logic for uploaded products -->
+  <img [src]="items.image" class="img-card product-uploaded" />
+</ng-template>
 
   <p class="p-name">{{ items.title.split(' ').slice(1, 8).join(' ') }}</p>
   <p class="price">₹{{items.price}}</p>

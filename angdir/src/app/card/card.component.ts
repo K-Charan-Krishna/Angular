@@ -39,10 +39,11 @@ export class CardComponent implements OnInit {
 
   host!:string
 
+  database!:string
   constructor(private productinj:Products) { }
 
-  ngOnInit() {
-    this.host='http://localhost:3000'
+  ngOnInit(): void {
+    this.database='http://localhost:3000'
   }
    @Input() items!:Product;
   addToCart(id:number){
