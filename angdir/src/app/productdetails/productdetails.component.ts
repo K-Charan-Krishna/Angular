@@ -23,7 +23,8 @@ interface Product {
   styleUrls: ['./productdetails.component.css']
 })
 export class ProductdetailsComponent implements OnInit,IDeactivate {
-
+  
+  host!:string
   detailedProduct:Product[]=[]
   productId!:string|null;
   productDetails:Product={
@@ -45,13 +46,14 @@ export class ProductdetailsComponent implements OnInit,IDeactivate {
     private route:Router) { }
 
   ngOnInit(): void {
+  this.host='http://localhost:3000'
   this.activeRoute.paramMap.subscribe(params => {
     this.productId = params.get('id');
     console.log(this.productId,'from detailed Product') 
     const numericId = Number(this.productId);
     this.products.fetchProducts().then(() => {
     this.products.product$.subscribe((value)=>{
-      this.detailedProduct=value.filter((each)=>each.id===numericId)
+      this.detailedProduct = value.filter(each => String(each.id) === String(this.productId));
       this.productDetails=this.detailedProduct[0]
       console.log(this.detailedProduct)
     })  

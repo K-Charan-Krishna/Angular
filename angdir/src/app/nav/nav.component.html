@@ -30,9 +30,11 @@
     <a routerLink="/"><h1 class="head">C-Cart</h1></a>
     </div>
     <div class="router-div">
-        <a routerLink="/"><p>Home</p></a>
-        <a routerLink="/allproduct"><p>Product</p></a>
-        <a routerLink="/insertproduct" *ngIf="isAdminUser"><p>Add Product</p></a>
+        <!-- <a routerLink="/" [ngClass]="currentUrl==='/'?:currentcss:''"><p>Home</p></a> -->
+        <a routerLink="/" [ngClass]="currentUrl === '/home' ? 'currentcss' : ''"><p>Home</p></a>
+        <a routerLink="/allproduct" [ngClass]="currentUrl === '/allproduct' ? 'currentcss' : ''"><p>Product</p></a>
+        <a routerLink="/insertproduct" [ngClass]="currentUrl === '/insertproduct' ? 'currentcss' : ''" *ngIf="isAdminUser"><p>Add Product</p></a>
+        <a routerLink="/adminaccess" [ngClass]="currentUrl === '/adminaccess' ? 'currentcss' : ''" *ngIf="isAdminUser"><p>Admin Access</p></a>
     </div>
     <div class="nav-cart">
     <input class="nav-input" 

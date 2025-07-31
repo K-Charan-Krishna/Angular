@@ -37,10 +37,12 @@ interface Product {
 })
 export class CardComponent implements OnInit {
 
+  host!:string
+
   constructor(private productinj:Products) { }
 
-  ngOnInit(): void {
-    
+  ngOnInit() {
+    this.host='http://localhost:3000'
   }
    @Input() items!:Product;
   addToCart(id:number){

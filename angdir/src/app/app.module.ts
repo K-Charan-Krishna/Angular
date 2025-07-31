@@ -24,6 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { ProductsComponent } from './products/products.component';
 import { InsertproductComponent } from './insertproduct/insertproduct.component';
 import { RegisterComponent } from './register/register.component';
+import { AdminAcessComponent } from './admin-acess/admin-acess.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     ProductsComponent,
     InsertproductComponent,
-    RegisterComponent 
+    RegisterComponent,
+    AdminAcessComponent 
   ],
   imports: [
     BrowserModule,

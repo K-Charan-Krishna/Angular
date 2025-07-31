@@ -1,5 +1,10 @@
-<div class="p-card"  >
-  <img [src]="items.image" class="img-card"/>
+<div class="p-card" >
+  <!-- Template if image starts with "/uploads/products" -->
+<img *ngIf="items.image?.startsWith('/uploads/products')" [src]="host+items.image" class="img-card" />
+
+<!-- Alternative template if not -->
+<img *ngIf="!items.image?.startsWith('/uploads/products')" [src]="items.image" class="img-card" />
+
   <p class="p-name">{{ items.title.split(' ').slice(1, 8).join(' ') }}</p>
   <p class="price">₹{{items.price}}</p>
   <p class="price">discount {{items.price | persentage}}</p>

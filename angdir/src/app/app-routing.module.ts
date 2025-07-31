@@ -9,6 +9,7 @@ import { LoginComponent} from './login/login.component'
 import {ProductsComponent} from './products/products.component'
 import {InsertproductComponent} from './insertproduct/insertproduct.component'
 import {RegisterComponent} from './register/register.component'
+import { AdminAcessComponent } from './admin-acess/admin-acess.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
     canDeactivate:[routeguard],
     canActivate:[ProtectrouteService]},
   {path:'insertproduct',component:InsertproductComponent,canActivate:[ProtectrouteService]},
-  {path:'register',component:RegisterComponent}
+  {path:'register',component:RegisterComponent},
+  {path:'adminaccess',component:AdminAcessComponent}
 ];
 
 

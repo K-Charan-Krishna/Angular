@@ -48,7 +48,7 @@ export class NavComponent implements OnInit {
   showSideBar(){
     this.product.handelSideBar()
     if((this.currentUrl.includes('/product')) || (this.currentUrl.includes('/cart'))){
-      this.router.navigate(['/'])
+      this.router.navigate(['/allproduct'])
     }
   }
   logout(){

@@ -48,10 +48,7 @@ body {
   gap: 12px;
   margin-right: 12px;
 }
-.router-div{
-  display: flex;
-  gap:12px;
-}
+
 .router-div> a{
   text-decoration: none;
   color:#ffff;
@@ -79,3 +76,22 @@ a{
   color: #ffff;
   margin-left: 12px;
 }
+.router-div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.router-div p {
+  padding: 8px;
+  border-radius: 5px;
+  text-align: center;
+  margin: 0;                 /* remove default p tag margin */
+  transition: background-color 0.3s;  /* optional: smooth highlight */
+}
+
+.currentcss {
+  background-color: #c7c2f5;
+  border-radius: 12px;
+}
+

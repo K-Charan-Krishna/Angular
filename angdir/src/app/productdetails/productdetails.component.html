@@ -1,7 +1,11 @@
 <app-nav></app-nav>
 <div class="product-detail-card">
   <div class="product-image">
-    <img [src]="productDetails?.image" [alt]="productDetails?.title" />
+      <!-- Template if image starts with "/uploads/products" -->
+    <img *ngIf="productDetails.image?.startsWith('/uploads/products')" [src]="host+productDetails.image" class="img-card" />
+
+    <!-- Alternative template if not -->
+    <img *ngIf="!productDetails.image?.startsWith('/uploads/products')" [src]="productDetails.image" class="img-card" />
   </div>
 
   <div class="product-info">

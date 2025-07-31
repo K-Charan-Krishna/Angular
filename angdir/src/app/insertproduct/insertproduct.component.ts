@@ -43,6 +43,7 @@ export class InsertproductComponent implements OnInit {
     this.price=this.formInputs.get('price')?.value
     this.description=this.formInputs.get('description')?.value
     this.image=this.formInputs.get('image')?.value
+    this.category=this.formInputs.get('category')?.value
     console.log(this.formInputs)
     const formData = new FormData();
     formData.append('image', this.imgFile);
@@ -57,8 +58,11 @@ export class InsertproductComponent implements OnInit {
     for (let pair of entries) {
       console.log(`${pair[0]}:`, pair[1]);
     }
-    this.http.post('http://localhost:3000/uploads/products', formData).subscribe({
-      next: (res) => console.log('Upload success:', res),
+    this.http.post<{ message: string; path: string }>('http://localhost:3000/uploads/products', formData).subscribe({
+      next: (res) => {
+        console.log('Upload success:', res)
+        alert(`Product Added Sucessfully with ${res.path}`)
+      },
       error: (err) => console.error('Upload error:', err)
     });
   }
@@ -81,5 +85,8 @@ export class InsertproductComponent implements OnInit {
     // reader.readAsDataURL(file);
   }
   }
-  
+  handelcategory(event: Event) {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    console.log('Selected category:', selectedValue);
+  }
 }
