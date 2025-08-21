@@ -14,13 +14,13 @@ export class ProtectrouteService implements CanActivate {
 
    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):boolean{
      const jwt= this.cookies.get('jwt')
-    //  if(jwt===''){
-    //   this.route.navigate(['/login'])
-    //   return false 
-    //  }
-    //  else{
-    //   return true
-    //  }
-    return true
+     if(jwt===''){
+      this.route.navigate(['/login'])
+      return false 
+     }
+     else{
+      return true
+     }
+    // return true
    }
 }

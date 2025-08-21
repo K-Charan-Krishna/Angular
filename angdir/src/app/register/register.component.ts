@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
   email!:string
   password!:string
   Url:string='http://localhost:3000/register'
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private route:Router) { }
 
   ngOnInit() {
     this.registerForm=new FormGroup({
@@ -32,7 +33,7 @@ export class RegisterComponent implements OnInit {
       password:this.registerForm.get('password')?.value
     }
     this.http.post(this.Url,data,{observe: 'response'}).subscribe(val=>{
-      console.log(val)
+      this.route.navigate(['/login'])
     })
 
   }

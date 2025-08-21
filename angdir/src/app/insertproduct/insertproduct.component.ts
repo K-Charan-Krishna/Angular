@@ -58,14 +58,31 @@ export class InsertproductComponent implements OnInit {
     for (let pair of entries) {
       console.log(`${pair[0]}:`, pair[1]);
     }
-    this.http.post<{ message: string; path: string }>('http://localhost:3000/uploads/products', formData).subscribe({
+    this.http.post<{ message: string; path: string }>('http://localhost:3000/uplodetos3', formData).subscribe({
       next: (res) => {
         console.log('Upload success:', res)
         alert(`Product Added Sucessfully with ${res.path}`)
       },
       error: (err) => console.error('Upload error:', err)
     });
+    const mailDetails = {
+      from: 'examplefrom@gmail.com',
+      to: 'exampleto@gmail.com'
+    };
+
+    // Send POST request to the backend
+    this.http.post('http://localhost:3000/sendmail', mailDetails).subscribe({
+      next: (res: any) => {
+        console.log('Email sent successfully:', res);
+        alert('Mail sent to exampleto@gmail.com');
+      },
+      error: (err: any) => {
+        console.error('Failed to send email:', err);
+        alert('Failed to send email. Please check the server.');
+      }
+    });
   }
+  
   handleingfile(event:Event){
   const fileInput = event.target as HTMLInputElement;
   if (fileInput.files && fileInput.files.length > 0) {
